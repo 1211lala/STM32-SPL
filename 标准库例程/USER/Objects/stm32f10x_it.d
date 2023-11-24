@@ -37,3 +37,4 @@
 .\objects\stm32f10x_it.o: ..\BspDriver\./LED/led.h
 .\objects\stm32f10x_it.o: ..\BspDriver\./DELAY/delay.h
 .\objects\stm32f10x_it.o: ..\BspDriver\./UART/uart.h
+.\objects\stm32f10x_it.o: ..\BspDriver\./TIM/tim.h

@@ -37,3 +37,4 @@
 .\objects\private_cfg.o: ..\USER\main.h
 .\objects\private_cfg.o: ..\BspDriver\./DELAY/delay.h
 .\objects\private_cfg.o: ..\BspDriver\./UART/uart.h
+.\objects\private_cfg.o: ..\BspDriver\./TIM/tim.h

@@ -37,3 +37,4 @@
 .\objects\led.o: ..\BspDriver\./LED/led.h
 .\objects\led.o: ..\BspDriver\./DELAY/delay.h
 .\objects\led.o: ..\BspDriver\./UART/uart.h
+.\objects\led.o: ..\BspDriver\./TIM/tim.h

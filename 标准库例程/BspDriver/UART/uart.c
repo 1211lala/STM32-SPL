@@ -3,6 +3,8 @@
 
 uint8_t usart1_rec_buf[100] = {0};
 uint16_t usart1_rec_number = 0;
+
+
 void usart1_uart_init(uint32_t buad)
 {
 	_USART1_RCC_CLK_ENABLE();

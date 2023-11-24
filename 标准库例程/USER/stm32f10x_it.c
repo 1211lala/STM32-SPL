@@ -164,7 +164,19 @@ void USART1_IRQHandler(void)
 	}
 }
 
-
+/**
+  * @brief  TIM1中断处理函数
+  * @param  None
+  * @retval None
+  */
+void TIM1_UP_IRQHandler(void)
+{
+	if(TIM_GetITStatus(TIM1, TIM_IT_Update) == SET)
+	{
+		TIM1_INT_UPDATE_Callback();
+		TIM_ClearITPendingBit(TIM1, TIM_IT_Update);
+	}
+}
 
 /******************************************************************************/
 /*                 STM32F10x Peripherals Interrupt Handlers                   */
