@@ -178,6 +178,23 @@ void TIM1_UP_IRQHandler(void)
 	}
 }
 
+/**
+  * @brief  DMA1_Channel2中断处理函数
+  * @param  None
+  * @retval None
+  */
+void DMA1_Channel2_IRQHandler(void)
+{
+	if(DMA_GetITStatus(DMA1_IT_TC2) == SET)
+	{
+		/* DMA的 normal 模式要先设置DISABLE 再开启下一次的操作 */
+		DMA_Cmd(DMA1_Channel2, DISABLE);
+		DMA_ClearITPendingBit(DMA1_IT_TC2);
+		
+		DMA_CHANNEL2_INT_TC_Callback();
+	}
+}
+
 /******************************************************************************/
 /*                 STM32F10x Peripherals Interrupt Handlers                   */
 /*  Add here the Interrupt Handler for the used peripheral(s) (PPP), for the  */

@@ -13,7 +13,7 @@
 #include "./DELAY/delay.h"
 #include "./UART/uart.h"
 #include "./TIM/tim.h"
-
+#include "./I2C/i2c.h"
 #endif
 
 

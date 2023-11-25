@@ -564,6 +564,11 @@
               <FileType>1</FileType>
               <FilePath>..\BspDriver\TIM\tim.c</FilePath>
             </File>
+            <File>
+              <FileName>i2c.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\BspDriver\I2C\i2c.c</FilePath>
+            </File>
           </Files>
         </Group>
       </Groups>

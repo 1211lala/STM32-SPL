@@ -37,3 +37,4 @@
 .\objects\main.o: ..\BspDriver\./DELAY/delay.h
 .\objects\main.o: ..\BspDriver\./UART/uart.h
 .\objects\main.o: ..\BspDriver\./TIM/tim.h
+.\objects\main.o: ..\BspDriver\./I2C/i2c.h

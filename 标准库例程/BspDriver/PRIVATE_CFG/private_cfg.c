@@ -6,18 +6,18 @@ void WFI_SET(void)
 {
 	__ASM volatile("wfi");		  
 }
-/* ¹Ø±ÕËùÓĞÖĞ¶Ï */
+/* å…³é—­æ‰€æœ‰ä¸­æ–­ */
 void INTX_DISABLE(void)
 {		  
 	__ASM volatile("cpsid i");
 }
-/* ¿ªÆôËùÓĞÖĞ¶Ï */
+/* å¼€å¯æ‰€æœ‰ä¸­æ–­ */
 void INTX_ENABLE(void)
 {
 	__ASM volatile("cpsie i");		  
 }
-/* ÉèÖÃÕ»¶¥µØÖ· */
-/* addr:Õ»¶¥µØÖ· */
+/* è®¾ç½®æ ˆé¡¶åœ°å€ */
+/* addr:æ ˆé¡¶åœ°å€ */
 __asm void MSR_MSP(uint32_t addr) 
 {
     MSR MSP, r0 			
@@ -26,15 +26,15 @@ __asm void MSR_MSP(uint32_t addr)
 
 
 
-/* ¼ÓÈëÒÔÏÂ´úÂë,Ö§³Öprintfº¯Êı,¶ø²»ĞèÒªÑ¡Ôñuse MicroLIB */
+/* åŠ å…¥ä»¥ä¸‹ä»£ç ,æ”¯æŒprintfå‡½æ•°,è€Œä¸éœ€è¦é€‰æ‹©use MicroLIB */
 #pragma import(__use_no_semihosting)             
-/* ±ê×¼¿âĞèÒªµÄÖ§³Öº¯Êı */                 
+/* æ ‡å‡†åº“éœ€è¦çš„æ”¯æŒå‡½æ•° */                 
 struct __FILE 
 { 
 	int handle; 
 }; 
 FILE __stdout;       
-/* ¶¨Òå_sys_exit()ÒÔ±ÜÃâÊ¹ÓÃ°ëÖ÷»úÄ£Ê½ */
+/* å®šä¹‰_sys_exit()ä»¥é¿å…ä½¿ç”¨åŠä¸»æœºæ¨¡å¼ */
 void _sys_exit(int x) 
 { 
 	x = x; 
@@ -43,10 +43,10 @@ void _sys_exit(int x)
 
 
 
-/* ÖØ¶¨Òåfputcº¯Êı */ 
+/* é‡å®šä¹‰fputcå‡½æ•° */ 
 int fputc(int ch, FILE *f)
 {      
-	/* ÅĞ¶ÏTCÎ» */
+	/* åˆ¤æ–­TCä½ */
 	while((USART1->SR & (1 << 6)) == 0);
 	USART1->DR = (uint8_t) ch;      
 	return ch;

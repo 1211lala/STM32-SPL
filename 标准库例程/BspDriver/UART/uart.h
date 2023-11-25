@@ -1,3 +1,11 @@
+/*
+ * @Author: liuao 2494210546@qq.com
+ * @Date: 2023-11-23 11:26:15
+ * @LastEditors: liuao 2494210546@qq.com
+ * @LastEditTime: 2023-11-25 13:02:42
+ * @FilePath: \USERe:\MY_CODE\Standard-Peripheral\标准库例程\BspDriver\UART\uart.h
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+ */
 #ifndef _UART_H_
 #define _UART_H_
 
@@ -12,7 +20,7 @@
 
 
 #define _USART1_RCC_CLK_ENABLE()	RCC_APB2PeriphClockCmd(RCC_APB2Periph_USART1, ENABLE); \
-																	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA, ENABLE)
+									RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA, ENABLE)
 	
 
 #define _USART1_ClEAR_IDLEA_Flag()	volatile uint16_t temp =0; temp = USART1->SR; temp = USART1->DR

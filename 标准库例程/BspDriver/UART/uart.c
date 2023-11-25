@@ -1,28 +1,34 @@
+/*
+ * @Author: liuao 2494210546@qq.com
+ * @Date: 2023-11-23 11:26:15
+ * @LastEditors: liuao 2494210546@qq.com
+ * @LastEditTime: 2023-11-25 13:00:11
+ * @FilePath: \USERe:\MY_CODE\Standard-Peripheral\æ ‡å‡†åº“ä¾‹ç¨‹\BspDriver\UART\uart.c
+ * @Description: è¿™æ˜¯é»˜è®¤è®¾ç½®,è¯·è®¾ç½®`customMade`, æ‰“å¼€koroFileHeaderæŸ¥çœ‹é…ç½® è¿›è¡Œè®¾ç½®: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+ */
 #include "./UART/uart.h"
-
 
 uint8_t usart1_rec_buf[100] = {0};
 uint16_t usart1_rec_number = 0;
 
-
 void usart1_uart_init(uint32_t buad)
 {
 	_USART1_RCC_CLK_ENABLE();
-	/* ÉèÖÃGPIO¿Ú¸´ÓÃ */
-	GPIO_InitTypeDef  GPIO_InitTypeDef = {0};
-	
+	/* è®¾ç½®GPIOå£å¤ç”¨ */
+	GPIO_InitTypeDef GPIO_InitTypeDef = {0};
+
 	GPIO_InitTypeDef.GPIO_Mode = GPIO_Mode_AF_PP;
 	GPIO_InitTypeDef.GPIO_Pin = USART1_TX_Pin;
 	GPIO_InitTypeDef.GPIO_Speed = GPIO_Speed_10MHz;
 	GPIO_Init(USART1_TX_Port, &GPIO_InitTypeDef);
-	
+
 	GPIO_InitTypeDef.GPIO_Mode = GPIO_Mode_IN_FLOATING;
 	GPIO_InitTypeDef.GPIO_Pin = USART1_RX_Pin;
 	GPIO_Init(USART1_RX_Port, &GPIO_InitTypeDef);
-	
-	/* ÅäÖÃ´®¿Ú²ÎÊı */
+
+	/* é…ç½®ä¸²å£å‚æ•° */
 	USART_InitTypeDef USART_InitTypeDef = {0};
-	
+
 	USART_InitTypeDef.USART_BaudRate = buad;
 	USART_InitTypeDef.USART_HardwareFlowControl = USART_HardwareFlowControl_None;
 	USART_InitTypeDef.USART_Mode = USART_Mode_Rx | USART_Mode_Tx;
@@ -30,22 +36,21 @@ void usart1_uart_init(uint32_t buad)
 	USART_InitTypeDef.USART_StopBits = USART_StopBits_1;
 	USART_InitTypeDef.USART_WordLength = USART_WordLength_8b;
 	USART_Init(USART1, &USART_InitTypeDef);
-	/* Ê¹ÄÜ´®¿Ú */
+	/* ä½¿èƒ½ä¸²å£ */
 	USART_Cmd(USART1, ENABLE);
-	/* ¿ªÆôÖĞ¶Ï */
-	USART_ITConfig(USART1,USART_IT_RXNE,ENABLE);
-	USART_ITConfig(USART1,USART_IT_IDLE,ENABLE);
-	
-	/* ÉèÖÃ´®¿ÚÖĞ¶ÏµÄNVIC */
+	/* å¼€å¯ä¸­æ–­ */
+	USART_ITConfig(USART1, USART_IT_RXNE, ENABLE);
+	USART_ITConfig(USART1, USART_IT_IDLE, ENABLE);
+
+	/* è®¾ç½®ä¸²å£ä¸­æ–­çš„NVIC */
 	NVIC_InitTypeDef NVIC_InitTypeDef = {0};
-	
+
 	NVIC_InitTypeDef.NVIC_IRQChannel = USART1_IRQn;
 	NVIC_InitTypeDef.NVIC_IRQChannelCmd = ENABLE;
 	NVIC_InitTypeDef.NVIC_IRQChannelPreemptionPriority = 1;
 	NVIC_InitTypeDef.NVIC_IRQChannelSubPriority = 1;
 	NVIC_Init(&NVIC_InitTypeDef);
 }
-
 
 __weak void USART1_INT_RXNE_Callback(void)
 {
@@ -58,21 +63,19 @@ __weak void USART1_INT_IDLE_Callback(void)
 	uart_transmit(USART1, usart1_rec_buf, usart1_rec_number);
 	usart1_rec_number = 0;
 }
-	
 
-
-void uart_transmit(USART_TypeDef* Base, uint8_t* Txbuf, uint16_t Size)
+void uart_transmit(USART_TypeDef *Base, uint8_t *Txbuf, uint16_t Size)
 {
-	for(uint16_t i=0; i < Size; i++)
+	for (uint16_t i = 0; i < Size; i++)
 	{
-		USART_SendData(Base, *Txbuf++);	
-		/* µÈ´ı·¢ËÍÍê³É */		
-		while(USART_GetFlagStatus(Base, USART_FLAG_TXE) == RESET);		
+		USART_SendData(Base, *Txbuf++);
+		/* ç­‰å¾…å‘é€å®Œæˆ */
+		while (USART_GetFlagStatus(Base, USART_FLAG_TXE) == RESET)
+		{
+		}
 	}
-	/* µÈ´ı·¢ËÍÇøÎª¿Õ */
-	while(USART_GetFlagStatus(Base, USART_FLAG_TC) == RESET);		
+	/* ç­‰å¾…å‘é€åŒºä¸ºç©º */
+	while (USART_GetFlagStatus(Base, USART_FLAG_TC) == RESET)
+	{
+	}
 }
-
-
-
-

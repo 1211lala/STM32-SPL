@@ -1,49 +1,45 @@
 #include "./DELAY/delay.h"
 
-
 uint32_t us_num = 0;
 uint32_t ms_num = 0;
 
 void systick_delay_init(uint8_t sysfreq)
 {
-	/*Ê±ÖÓÔ´Ñ¡ÔñHCLK ÏµÍ³Ê±ÖÓ */
-	SysTick_CLKSourceConfig(SysTick_CLKSource_HCLK);	
-	
+	/*æ—¶é’Ÿæºé€‰æ‹©HCLK ç³»ç»Ÿæ—¶é’Ÿ */
+	SysTick_CLKSourceConfig(SysTick_CLKSource_HCLK);
+
 	us_num = sysfreq;
 	ms_num = us_num * 1000;
 }
 
 /*
-	×î´ó¼ÆÊıÊ±¼ä 0xffffff/72 Ô¼ 200000us;
+	æœ€å¤§è®¡æ•°æ—¶é—´ 0xffffff/72 çº¦ 200000us;
 */
 void delay_us(uint32_t nus)
 {
 	uint32_t reg_state = 0;
-	
-	/* ÉèÖÃ¼ÓÔØÖµ */
+
+	/* è®¾ç½®åŠ è½½å€¼ */
 	SysTick->LOAD = us_num * nus;
-	/* ÉèÖÃµ±Ç°¼ÆÊıÖµÎª0 »á×Ô¶¯µÄ¼ÓÔØLOADÖĞµÄÖµ */
+	/* è®¾ç½®å½“å‰è®¡æ•°å€¼ä¸º0 ä¼šè‡ªåŠ¨çš„åŠ è½½LOADä¸­çš„å€¼ */
 	SysTick->VAL = 0;
-	/* ¿ªÆô¶¨Ê±Æ÷ */
+	/* å¼€å¯å®šæ—¶å™¨ */
 	SysTick->CTRL |= SysTick_CTRL_ENABLE_Msk;
 	do
 	{
 		reg_state = SysTick->CTRL;
 	}
-	/* reg_state&0x01ÅĞ¶ÏsystickÊÇ·ñÊ¹ÄÜ   reg_state&(1<<16)) ÅĞ¶Ï³¬Ê±Òç³ö */
-	while((reg_state&0x01)&&!(reg_state&(1<<16)));
-	/* ¹Ø±Õ¶¨Ê±Æ÷ */
+	/* reg_state&0x01åˆ¤æ–­systickæ˜¯å¦ä½¿èƒ½   reg_state&(1<<16)) åˆ¤æ–­è¶…æ—¶æº¢å‡º */
+	while ((reg_state & 0x01) && !(reg_state & (1 << 16)));
+	/* å…³é—­å®šæ—¶å™¨ */
 	SysTick->CTRL &= ~SysTick_CTRL_ENABLE_Msk;
 	SysTick->VAL = 0;
 }
 
-
 void delay_ms(uint32_t nms)
 {
-	while(nms --)
+	while (nms--)
 	{
 		delay_us(1000);
 	}
 }
-
-
