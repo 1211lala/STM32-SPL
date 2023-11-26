@@ -39,3 +39,5 @@
 .\objects\tim.o: ..\BspDriver\./UART/uart.h
 .\objects\tim.o: ..\BspDriver\./TIM/tim.h
 .\objects\tim.o: ..\BspDriver\./I2C/i2c.h
+.\objects\tim.o: ..\BspDriver\./SPI/spi.h
+.\objects\tim.o: ..\BspDriver\./WK2124/wk2124.h

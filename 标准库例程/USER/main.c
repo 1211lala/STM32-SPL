@@ -29,20 +29,19 @@ int main(void)
 		/* 打开DMA通道2 */
 		DMA_Cmd(DMA1_Channel2, ENABLE);	
 	}
+	uint8_t rx[40];
+	
 	{
-		i2c1_init(400000);
+		wk2124_init();
+		
 	}
-	uint8_t txbuf[10] = {0xE3};
-	uint8_t rxbuf[10] = {0};
   while(1)
 	{
-	
+		
+
+		delay_ms(200);
 		led_toggle();
-//		printf("write error %d \r\n", I2C_WriteBytes(I2C1, 0X80, txbuf, 1));
-		delay_ms(200);
-		printf(" read error %d\r\n",I2C_ReadBytes(I2C1, 0X80,0xE3 ,rxbuf, 3));
-		printf("%02x  %02x  %02x\r\n", rxbuf[0], rxbuf[1], rxbuf[2]);
-		delay_ms(200);
+		
 	}
 }
 

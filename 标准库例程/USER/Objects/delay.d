@@ -39,3 +39,5 @@
 .\objects\delay.o: ..\BspDriver\./UART/uart.h
 .\objects\delay.o: ..\BspDriver\./TIM/tim.h
 .\objects\delay.o: ..\BspDriver\./I2C/i2c.h
+.\objects\delay.o: ..\BspDriver\./SPI/spi.h
+.\objects\delay.o: ..\BspDriver\./WK2124/wk2124.h

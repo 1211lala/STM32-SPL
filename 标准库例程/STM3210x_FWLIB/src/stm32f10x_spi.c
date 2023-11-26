@@ -544,6 +544,7 @@ void SPI_I2S_DMACmd(SPI_TypeDef* SPIx, uint16_t SPI_I2S_DMAReq, FunctionalState 
   * @param  Data : Data to be transmitted.
   * @retval None
   */
+
 void SPI_I2S_SendData(SPI_TypeDef* SPIx, uint16_t Data)
 {
   /* Check the parameters */

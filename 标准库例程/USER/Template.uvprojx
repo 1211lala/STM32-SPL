@@ -569,6 +569,16 @@
               <FileType>1</FileType>
               <FilePath>..\BspDriver\I2C\i2c.c</FilePath>
             </File>
+            <File>
+              <FileName>spi.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\BspDriver\SPI\spi.c</FilePath>
+            </File>
+            <File>
+              <FileName>wk2124.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\BspDriver\WK2124\wk2124.c</FilePath>
+            </File>
           </Files>
         </Group>
       </Groups>

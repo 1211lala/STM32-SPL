@@ -39,3 +39,5 @@
 .\objects\led.o: ..\BspDriver\./UART/uart.h
 .\objects\led.o: ..\BspDriver\./TIM/tim.h
 .\objects\led.o: ..\BspDriver\./I2C/i2c.h
+.\objects\led.o: ..\BspDriver\./SPI/spi.h
+.\objects\led.o: ..\BspDriver\./WK2124/wk2124.h

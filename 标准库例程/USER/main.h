@@ -14,6 +14,10 @@
 #include "./UART/uart.h"
 #include "./TIM/tim.h"
 #include "./I2C/i2c.h"
+#include "./SPI/spi.h"
+#include "./WK2124/wk2124.h"
+
+
 #endif
 
 
