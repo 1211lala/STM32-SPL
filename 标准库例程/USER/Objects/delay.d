@@ -40,4 +40,5 @@
 .\objects\delay.o: ..\BspDriver\./TIM/tim.h
 .\objects\delay.o: ..\BspDriver\./I2C/i2c.h
 .\objects\delay.o: ..\BspDriver\./SPI/spi.h
-.\objects\delay.o: ..\BspDriver\./WK2124/wk2124.h
+.\objects\delay.o: ..\Peripheral\./WK2124/wk2124.h
+.\objects\delay.o: ..\BspDriver\./IDOG/idog.h

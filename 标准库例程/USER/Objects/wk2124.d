@@ -1,5 +1,5 @@
-.\objects\wk2124.o: ..\BspDriver\WK2124\wk2124.c
-.\objects\wk2124.o: ..\BspDriver\./WK2124/wk2124.h
+.\objects\wk2124.o: ..\Peripheral\WK2124\wk2124.c
+.\objects\wk2124.o: ..\Peripheral\./WK2124/wk2124.h
 .\objects\wk2124.o: ..\USER\main.h
 .\objects\wk2124.o: ..\USER\stm32f10x.h
 .\objects\wk2124.o: ..\CORE\core_cm3.h
@@ -40,4 +40,5 @@
 .\objects\wk2124.o: ..\BspDriver\./TIM/tim.h
 .\objects\wk2124.o: ..\BspDriver\./I2C/i2c.h
 .\objects\wk2124.o: ..\BspDriver\./SPI/spi.h
-.\objects\wk2124.o: ..\BspDriver\./WK2124/wk2124.h
+.\objects\wk2124.o: ..\Peripheral\./WK2124/wk2124.h
+.\objects\wk2124.o: ..\BspDriver\./IDOG/idog.h

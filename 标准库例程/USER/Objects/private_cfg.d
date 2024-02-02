@@ -40,4 +40,5 @@
 .\objects\private_cfg.o: ..\BspDriver\./TIM/tim.h
 .\objects\private_cfg.o: ..\BspDriver\./I2C/i2c.h
 .\objects\private_cfg.o: ..\BspDriver\./SPI/spi.h
-.\objects\private_cfg.o: ..\BspDriver\./WK2124/wk2124.h
+.\objects\private_cfg.o: ..\Peripheral\./WK2124/wk2124.h
+.\objects\private_cfg.o: ..\BspDriver\./IDOG/idog.h

@@ -22,6 +22,8 @@ void spi1_init(void)
 	GPIO_InitTypeDef.GPIO_Speed = GPIO_Speed_50MHz;
 	GPIO_Init(SPI1_MISO_Port, &GPIO_InitTypeDef);	
 	
+	GPIO_SetBits(SPI1_SCK_Port,SPI1_SCK_Pin|SPI1_MOSI_Pin|SPI1_MISO_Pin);
+	
 	SPI_InitTypeDef.SPI_BaudRatePrescaler = SPI_BaudRatePrescaler_8;
 	SPI_InitTypeDef.SPI_CPHA = SPI_CPHA_1Edge;
 	SPI_InitTypeDef.SPI_CPOL = SPI_CPOL_Low;
@@ -35,7 +37,6 @@ void spi1_init(void)
 	SPI_Init(SPI1, &SPI_InitTypeDef);
 	
 	SPI_Cmd(SPI1, ENABLE);
-	delay_ms(10);
 }
 
 
@@ -59,7 +60,6 @@ uint8_t SPI_ReadWrite_Byte(SPI_TypeDef* SPIX, uint8_t Txchar)
 	uint16_t timeout = 1000;
 	while (SPI_I2S_GetFlagStatus(SPIX, SPI_I2S_FLAG_TXE) == RESET) //检查指定的SPI标志位设置与否:发送缓存空标志位
 	{
-		
 		if(timeout-- == 0) 
 		{
 			return 0;
@@ -80,7 +80,8 @@ uint8_t SPI_ReadWrite_Byte(SPI_TypeDef* SPIX, uint8_t Txchar)
 
 void SPI_ReadWrite_Bytes(SPI_TypeDef* SPIX, uint8_t* Rxbuf, uint8_t* Txbuf, uint16_t Size)
 {
-	for(uint16_t i=0; i<Size; i++)
+	uint16_t i = 0;
+	for(i=0; i<Size; i++)
 	{
 		Rxbuf[i] = SPI_ReadWrite_Byte(SPIX, Txbuf[i]);
 	}

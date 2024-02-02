@@ -40,4 +40,5 @@
 .\objects\i2c.o: ..\BspDriver\./TIM/tim.h
 .\objects\i2c.o: ..\BspDriver\./I2C/i2c.h
 .\objects\i2c.o: ..\BspDriver\./SPI/spi.h
-.\objects\i2c.o: ..\BspDriver\./WK2124/wk2124.h
+.\objects\i2c.o: ..\Peripheral\./WK2124/wk2124.h
+.\objects\i2c.o: ..\BspDriver\./IDOG/idog.h

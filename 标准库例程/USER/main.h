@@ -16,7 +16,7 @@
 #include "./I2C/i2c.h"
 #include "./SPI/spi.h"
 #include "./WK2124/wk2124.h"
-
+#include "./IDOG/idog.h"
 
 #endif
 

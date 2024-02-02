@@ -40,4 +40,5 @@
 .\objects\stm32f10x_it.o: ..\BspDriver\./TIM/tim.h
 .\objects\stm32f10x_it.o: ..\BspDriver\./I2C/i2c.h
 .\objects\stm32f10x_it.o: ..\BspDriver\./SPI/spi.h
-.\objects\stm32f10x_it.o: ..\BspDriver\./WK2124/wk2124.h
+.\objects\stm32f10x_it.o: ..\Peripheral\./WK2124/wk2124.h
+.\objects\stm32f10x_it.o: ..\BspDriver\./IDOG/idog.h

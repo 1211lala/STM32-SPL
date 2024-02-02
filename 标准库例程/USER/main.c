@@ -29,19 +29,21 @@ int main(void)
 		/* 打开DMA通道2 */
 		DMA_Cmd(DMA1_Channel2, ENABLE);	
 	}
-	uint8_t rx[40];
-	
 	{
 		wk2124_init();
 		
+		Wk2xxxRstInit();
+		WkUartInit(1);
+		WkUartSetBaud(1,115200);
 	}
+	{
+		idog_init(IWDG_Prescaler_32,4000);
+	}
+	WkUartTxChars(1, strlen("system restart\r\n"), (uint8_t*)"system restart\r\n");
   while(1)
 	{
-		
-
-		delay_ms(200);
+		idog_restart();
 		led_toggle();
-		
 	}
 }
 
